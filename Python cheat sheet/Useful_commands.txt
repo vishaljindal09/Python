@@ -1,0 +1,97 @@
+#########Numpy#############
+vector = np.array([10, 20, 30])
+matrix = np.array([[5, 10, 15], [20, 25, 30], [35, 40, 45]])
+vector_shape=vector.shape
+matrix_shape=matrix.shape
+
+(3,)
+(3, 3)
+
+
+##Manipulation of np matrix
+
+is_algeria_and_1986=(world_alcohol[:,0]=="1986") &(world_alcohol[:,2]=="Algeria")
+
+rows_with_algeria_and_1986=world_alcohol[is_algeria_and_1986]
+
+##replacing empty with 0
+is_value_empty=world_alcohol[:,4]==''
+world_alcohol[is_value_empty,4]=0
+
+##converting the data type
+alcohol_consumption =alcohol_consumption.astype(float)
+
+#functions on whole columns
+
+total_alcohol=alcohol_consumption.sum()
+average_alcohol=alcohol_consumption.mean()
+
+###############Pandas################
+import pandas as pd
+
+food_info=pd.read_csv("food_info.csv")  ##dataframe
+
+#### Shape and head and tail
+
+print(food_info.head(3))
+dimensions = food_info.shape
+print(dimensions)
+num_rows = dimensions[0]
+print(num_rows)
+num_cols = dimensions[1]
+print(num_cols)
+
+first_twenty=food_info.head(20)
+last_twenty=food_info.tail(20)
+
+
+##A Series is a labelled collection of values similar to the NumPy vector. The main advantage of Series objects is the ability to utilize non-integer labels. ##NumPy arrays can only utilize integer labels for indexing.
+
+###loc- its the rowindex or label
+
+hundredth_row=food_info.loc[99]
+
+#####sorting##
+
+food_info.sort_values("Norm_Nutr_Index", inplace=True,ascending=False)
+
+
+##is null missing value boolean vector
+
+age_null=pd.isnull(age)
+
+##mean function skips null/missing value
+
+correct_mean_fare=titanic_survival["fare"].mean()
+
+
+###pivot table
+
+import numpy as np
+
+port_stats=titanic_survival.pivot_table(index="embarked", values=["fare","survived"], aggfunc=np.sum)
+
+print(port_stats)
+
+##drop missing values
+drop_na_rows = titanic_survival.dropna(axis=0)  ##drops by rows
+
+drop_na_columns=titanic_survival.dropna(axis=1) ##drop all columns with missing data
+
+new_titanic_survival=titanic_survival.dropna(axis=0,subset=["age","sex"])  ##Drop all rows in titanic_survival where the columns "age" or "sex" have missing 
+
+#iloc, wehre data is sorted i means integer. It gives the data based on integer value of row in the dataset
+
+first_five_rows = new_titanic_survival.iloc[0:5]
+
+##Assign the value at row index label 1100, column index label "age" from new_titanic_survival to row_index_1100_age.
+row_index_1100_age=new_titanic_survival.loc[1100,"age"]
+
+##Assign the first 5 rows and first three columns from new_titanic_survival to five_rows_three_cols.
+five_rows_three_cols=new_titanic_survival.iloc[0:5,0:3]
+
+## reset_index By default, the method retains the old index by adding an extra column to the dataframe with the old index values.
+
+titanic_reindexed=new_titanic_survival.reset_index(drop=True)
+
+
