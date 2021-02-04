@@ -1,0 +1,7 @@
+https://docs.python.org/3/
+https://docs.python.org/3.5/tutorial/classes.html
+http://ipython.org/
+https://numpy.org/
+https://pandas.pydata.org/
+https://matplotlib.org/
+https://stackoverflow.com/questions/tagged/pandas
