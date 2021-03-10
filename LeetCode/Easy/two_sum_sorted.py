@@ -14,9 +14,33 @@ Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
 """
 
 """
-Brute force with O(n^2)
+Brute force with O(n^2),time limit excedd issues in leet code 18/19 test cases passed
 
 """
+
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        
+        for i in range(0,len(numbers)):
+            
+            current_value = numbers[i]
+
+            for j in range(i+1, len(numbers)):
+                
+                value_req = target - current_value
+                
+                if numbers[j] == value_req :
+                    
+                    result = [i+1,j+1]
+                    
+                    return result
+                
+                elif numbers[i] + numbers [j] > target :
+                    
+                    break
+                    
+      
+      
 
 """
 
